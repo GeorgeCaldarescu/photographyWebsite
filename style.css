@@ -1,0 +1,399 @@
+/* Global styles  */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* adding the font locally*/
+@font-face{
+    font-family: 'Ruhl';
+    src: url('./fonts/FrankRuhlLibre-Regular.ttf');
+}
+
+@font-face{
+    font-family: 'Ruhl Medium';
+    src: url('./fonts/FrankRuhlLibre-Medium.ttf');
+}
+
+@font-face{
+    font-family: 'Vibes';
+    src: url('./fonts/GreatVibes-Regular.ttf');
+}
+
+
+html{
+    font-size: 62.5%;
+    /* make some variables for the font size, I'll use fluid size that means that from a base will increase by 10px every 1000px of weight. The vairable is setted with the two -- the best thing of the variables is that we can change quickly*/
+    --header1: calc(2rem + 1vw);
+    --header2: calc(3.5rem + 1vw);
+    --header3: calc(3rem + 1vw);
+    --header4: calc(3.4rem + 1vw);
+    --text: calc(1.5rem + 1vw);
+    --big: calc(6rem + 1vw);
+    /* special color because is not the main one, used a few times */
+    --special-color: #906272;
+    --background-color: #414141;
+    --gray-text: #525252;
+}
+
+h1{
+    font-size: var(--header1);
+}
+
+li, button, label, input, p, a{
+    font-size: var(--text);
+}
+
+h2{
+    font-size: var(--header2);
+}
+
+h3{
+    font-size: var(--header3);
+}
+
+h4, h5{
+    font-size: var(--header4);
+}
+
+
+ul{
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* set here something we can use often like flex, so in this way is easier and we will write less code */
+.flex{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+body{
+    font-family: 'Ruhl', sans-serif;
+    /* animation */
+    animation: opening 1s ease-in-out;
+}
+
+h1{
+    font-family: 'Vibes', sans-serif;
+}
+
+/* Nav section */
+.main-head{
+    /* make a shadow under the main head and keep the shadow over the background, if need add z-index*/
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+    position:relative;
+    
+}
+
+nav{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    min-height: 10vh;
+    padding: 2rem 0;
+}
+
+#logo{
+    flex: 1 1 20rem;
+}
+.nav-links{
+    display: flex;
+    justify-content: space-around;
+    flex: 1 1 20rem;
+}
+
+.hero{
+    /* to make it all screen*/
+    min-height: 90vh;
+    /* to have the margin only on the logo side*/
+    width: 95%;
+    margin: 0 0 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+
+    /* this is to remove the scroll bar from the bottom when I add the plants, try to do it without and will understand*/
+    overflow: hidden;
+}
+
+.hero-introduction{
+    flex: 2 1 40rem;
+    text-align: center;
+}
+
+.hero-introduction p{
+    padding: 5rem 10rem;
+    color: var(--gray-text);
+}
+
+.hero-introduction h2{
+    padding-top: 3rem;
+}
+
+/* make some space for the button and put the borders*/
+.hero-introduction a{
+    padding: 3rem 8rem;
+    border: 3px solid black;
+}
+
+.hero-images{
+    flex: 1 1 40rem;
+    background: linear-gradient(#dad8dd, #dad1d4);
+    position: relative;
+    z-index: 1;   
+}
+
+/* get rid off the stretching problem when the window is resizing */
+.hero-elena{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* add the decorative plants */
+.plant{
+    position: absolute;
+    bottom: 0;
+    left: -20%;
+    z-index: -1;
+    animation: plant-shake 2.5s ease-in-out infinite alternate-reverse 0.5s;
+    max-height: 80%;
+}
+
+.plant2{
+    left: 40%;
+}
+
+/* About section*/
+.about{
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.about-text{
+    flex: 2 1 40rem;
+    justify-content: space-around;
+    background: var(--background-color);
+    color: white;
+}
+
+.about-text div{
+    padding: 3rem 8rem;
+}
+
+.about-text h3{
+    padding: 2rem 0;
+    font-family: "Ruhl Medium";
+}
+
+.about-text h2{
+    font-family: "Vibes";
+    padding: 4rem;
+}
+
+.about-image{
+    flex: 1 1 40rem;
+    /* to put the MINIMAL text on the image */
+    position: relative;
+}
+
+.about-image h5{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    /* to center the text */
+    transform: translate(-50%, -20%);
+    letter-spacing: 5rem;
+}
+
+/* to get rid off the stretching problem when the window is resizing*/
+.about-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Gallery section*/
+
+.gallery{
+    /* in this section I use grid instead flex*/
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: repeat(3, 1fr);
+    position: relative;
+}
+
+.gallery img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* dispongo le imagini nella galleria come da mock-up di figma */
+
+.gallery1{
+    grid-column: 1/3;
+}
+
+.gallery2{
+    grid-column: 3/4;
+    grid-row: 1/3;
+}
+
+.gallery-head{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background: var(--background-color);
+    padding: 5rem 10rem;
+    text-align: center;
+}
+
+/* contact section */
+.contact{
+    min-height: 90vh;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contact img{
+    flex: 1 1 40rem; 
+}
+
+.form-wrap{
+    flex: 3 1 40rem;
+}
+
+.form-wrap h2{
+    margin-bottom:3rem;
+}
+.form-wrap span{
+    font-size: var(--big);
+    color: var(--special-color);
+}
+
+.form-wrap label{
+    display: block;
+}
+
+.form-wrap input{
+    display: block;
+    margin: 3 0rem;
+    background: var(--background-color);
+    color: white;
+    border: none;
+    padding: 1rem;
+}
+
+.form-wrap button{
+    padding: 1rem 8rem;
+    background: var(--special-color);
+    color: white;
+    border: none;
+    width: 100%;
+    margin-top: 2rem;
+    cursor: pointer;
+}
+
+/* Footer */
+footer{
+    background: var(--background-color);
+    color: white;
+    display: flex;
+    padding: 3rem 5%;
+    align-items: center;
+}
+
+footer ul{
+    display: flex;
+    flex: 1 1 40rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer h4{
+    flex: 4 1 40rem;
+    font-size: calc(1rem + 1vw)
+}
+
+/* Plants animation. But I'm not sure, I like how it look without, so maybe I'll put everything in a comment. Remember to check also in the body section to remove or add it. The opening part is very cool. The are someother but I don't like them*/
+
+@keyframes opening{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1}
+}
+
+/* @keyframes plant-entrance{
+    from {
+        transform: translateY(10%);
+    }
+    to {
+        transform: translateY(0%);
+    }
+} */
+
+/* this one is pretty cool*/
+@keyframes plant-shake{
+    from{
+        transform: rotateZ(-5deg);
+    }
+    to {
+        transform: rotateZ(0deg);
+    }
+}
+
+
+
+/* Remove the strange plant branch when the window become too small */
+@media screen and (max-width: 842px){
+    .hero {
+        width: 100%;
+    }
+    .hero-introduction p{
+        padding: 5rem 3rem;
+    }
+
+    /* About section*/
+    .about-text div{
+        padding: 3rem 3rem;
+    }
+
+    /* make the gallery (grid) responsive*/
+    .gallery img{
+        grid-row: auto;
+        grid-column: auto;
+    }
+    .gallery{
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    }
+    .gallery-head{
+        display:none;
+    }
+}
+
+/* another media because the text increase when the sceen become larger. So in this way I will block at 1700xp */
+
+@media screen and (min-width 1700px){
+    html{
+        --header1: 3rem;
+        --header2: 4.5rem;
+        --header3: 3.5rem;
+        --header4: 2.5rem;
+        --big: 6rem;
+        --text: 2.5rem;
+    }
+}
